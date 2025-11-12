@@ -62,8 +62,8 @@ const DIMENSIONS = {
   OUTER_RING_OFFSET: 10,
   /** Additional tolerance for hover detection beyond outer radius */
   HOVER_TOLERANCE: 20,
-  /** Gap angle between segments in degrees (currently disabled) */
-  SEGMENT_GAP: 0,
+  /** Gap angle between segments in degrees */
+  SEGMENT_GAP: 10,
   /** Size of the icon container */
   ICON_SIZE: 32,
   /** Half of icon size for centering calculations */
@@ -227,21 +227,30 @@ export default function RadialMenu({
    * Pre-calculate all segment paths and positions (memoized)
    * Only recalculates when number of items changes
    */
-  const segmentData = useMemo<PreCalculatedSegment[]>(() => {
+  const precalculatedSegments = useMemo<PreCalculatedSegment[]>(() => {
     return Array.from({ length: items.length }, (_, index) => {
       const { startAngle, endAngle, midAngle } = calculateSegmentAngles(
         index,
         items.length
       );
 
-      // Calculate segment path
-      const outerStart = getCirclePoint(startAngle, ARC_CONFIG.RADIUS);
-      const outerEnd = getCirclePoint(endAngle, ARC_CONFIG.RADIUS);
+      /**
+       * Build the SVG path for a donut segment with visual gaps between items.
+       * We create two arcs (outer and inner) and connect them to form a slice.
+       * Gaps are applied by shrinking each segment from both ends.
+       */
+      const gapAngle = DIMENSIONS.SEGMENT_GAP;
+      const adjustedStartAngle = startAngle + gapAngle;
+      const adjustedEndAngle = endAngle - gapAngle;
+      
+      const outerStart = getCirclePoint(adjustedStartAngle, ARC_CONFIG.RADIUS);
+      const outerEnd = getCirclePoint(adjustedEndAngle, ARC_CONFIG.RADIUS);
       const innerRadius = ARC_CONFIG.RADIUS - ARC_CONFIG.RING_WIDTH;
-      const innerStart = getCirclePoint(startAngle, innerRadius);
-      const innerEnd = getCirclePoint(endAngle, innerRadius);
+      const innerStart = getCirclePoint(adjustedStartAngle, innerRadius);
+      const innerEnd = getCirclePoint(adjustedEndAngle, innerRadius);
       const segmentAngle = ARC_CONFIG.TOTAL_ARC / items.length;
-      const largeArcFlag = segmentAngle > 180 ? 1 : 0;
+      // SVG arc flag: determines if we draw the long way (1) or short way (0) around the circle
+      const largeArcFlag = segmentAngle - gapAngle * 2 > 180 ? 1 : 0;
 
       const segmentPath = `
         M ${outerStart.x} ${outerStart.y}
@@ -251,13 +260,11 @@ export default function RadialMenu({
         Z
       `;
 
-      // Calculate outer ring path
-      const gapAngle = DIMENSIONS.SEGMENT_GAP;
-      const adjustedStartAngle = startAngle + gapAngle;
-      const adjustedEndAngle = endAngle - gapAngle;
+      // Calculate outer ring path (decorative arc that sits outside the main segments)
       const outerRadius = ARC_CONFIG.RADIUS + DIMENSIONS.OUTER_RING_OFFSET;
       const startPoint = getCirclePoint(adjustedStartAngle, outerRadius);
       const endPoint = getCirclePoint(adjustedEndAngle, outerRadius);
+      // SVG arc flag for the outer ring
       const outerLargeArcFlag = segmentAngle - gapAngle * 2 > 180 ? 1 : 0;
 
       const outerRingPath = `M ${startPoint.x} ${startPoint.y} A ${outerRadius} ${outerRadius} 0 ${outerLargeArcFlag} 1 ${endPoint.x} ${endPoint.y}`;
@@ -306,7 +313,11 @@ export default function RadialMenu({
     // Use local variable to track hover state without causing re-renders
     let currentHoveredIndex: number | null = null;
 
-    // Pre-calculate constants outside event handler
+    /**
+     * Pre-calculate constants outside event handler for performance.
+     * These values don't change during interaction, so computing them once
+     * avoids redundant calculations on every mouse move event.
+     */
     const innerRadius = ARC_CONFIG.RADIUS - ARC_CONFIG.RING_WIDTH;
     const outerRadius = ARC_CONFIG.RADIUS;
     const normalizedStartAngle = normalizeAngle(ARC_CONFIG.START_ANGLE);
@@ -318,12 +329,12 @@ export default function RadialMenu({
       const deltaY = e.clientY - pos.y;
 
       // Calculate distance from center
-      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      const distanceFromCenter = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
       // Check if mouse is within the interactive ring area
       const isOutsideRing =
-        distance < innerRadius ||
-        distance > outerRadius + DIMENSIONS.HOVER_TOLERANCE;
+        distanceFromCenter < innerRadius ||
+        distanceFromCenter > outerRadius + DIMENSIONS.HOVER_TOLERANCE;
 
       if (isOutsideRing) {
         if (currentHoveredIndex !== null) {
@@ -333,7 +344,11 @@ export default function RadialMenu({
         return;
       }
 
-      // Calculate angle in degrees and normalize to 0-360 range
+      /**
+       * Convert mouse position to an angle, then determine which segment is hovered.
+       * Coordinate system: 0° is right (3 o'clock), angles increase counter-clockwise.
+       * Our menu starts at -180° (left/9 o'clock) and spans 360°.
+       */
       const rawAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
       const angle = normalizeAngle(rawAngle);
 
@@ -342,7 +357,7 @@ export default function RadialMenu({
       const segmentAngle = ARC_CONFIG.TOTAL_ARC / currentItems.length;
       let relativeAngle = angle - normalizedStartAngle;
 
-      // Handle angle wrap-around cases
+      // Handle angle wrap-around cases (e.g., when crossing from 359° to 0°)
       if (relativeAngle < 0) relativeAngle += 360;
       if (relativeAngle >= ARC_CONFIG.TOTAL_ARC) relativeAngle -= 360;
 
@@ -437,6 +452,30 @@ export default function RadialMenu({
           >
             {/* SVG filter definitions for optional visual effects */}
             <defs>
+              {/* Radial gradient for base segment state */}
+              <radialGradient 
+                id="segmentGradientBase" 
+                cx="0" 
+                cy="0" 
+                r={ARC_CONFIG.RADIUS}
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stopColor="#2a2a2a" />
+                <stop offset="100%" stopColor="#232323" />
+              </radialGradient>
+              
+              {/* Radial gradient for hovered segment state */}
+              <radialGradient 
+                id="segmentGradientHover" 
+                cx="0" 
+                cy="0" 
+                r={ARC_CONFIG.RADIUS}
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0%" stopColor="#3a3a3a" />
+                <stop offset="100%" stopColor="#282828" />
+              </radialGradient>
+              
               {/* Glow effect filter (used when OPTIONAL_EFFECTS.SEGMENT_GLOW is enabled) */}
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -460,7 +499,7 @@ export default function RadialMenu({
             {/* Render each menu segment with icon (using pre-calculated data) */}
             {items.map((item, index) => {
               const isHovered = hoveredIndex === index;
-              const segment = segmentData[index];
+              const segment = precalculatedSegments[index];
 
               return (
                 <g key={item.id}>
@@ -468,17 +507,19 @@ export default function RadialMenu({
                   <motion.path
                     d={segment.segmentPath}
                     fill={
-                      isHovered ? COLORS.SEGMENT_HOVER : COLORS.SEGMENT_BASE
+                      isHovered
+                        ? "url(#segmentGradientHover)"
+                        : "url(#segmentGradientBase)"
                     }
                     stroke={COLORS.SEGMENT_STROKE}
-                    strokeWidth="1"
+                    strokeWidth="2"
                     strokeLinejoin="round"
                     vectorEffect="non-scaling-stroke"
                     initial={{ opacity: 1 }}
                     animate={{
                       fill: isHovered
-                        ? COLORS.SEGMENT_HOVER
-                        : COLORS.SEGMENT_BASE,
+                        ? "url(#segmentGradientHover)"
+                        : "url(#segmentGradientBase)",
                       opacity: 1,
                     }}
                     transition={ANIMATION_CONFIG.SEGMENT_TRANSITION}
@@ -508,6 +549,7 @@ export default function RadialMenu({
                         : COLORS.OUTER_RING_BASE
                     }
                     strokeWidth={DIMENSIONS.OUTER_RING_WIDTH}
+                    strokeLinecap="round"
                     initial={{ opacity: 0.4 }}
                     animate={{
                       stroke: isHovered

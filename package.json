@@ -1,5 +1,5 @@
 {
-  "name": "elasticui",
+  "name": "arcticui",
   "private": true,
   "scripts": {
     "build": "turbo run build",

@@ -1,9 +1,9 @@
 {
-  "name": "elasticui",
+  "name": "arcticui",
   "version": "0.1.0",
-  "description": "CLI for adding elasticui components to your project",
+  "description": "CLI for adding arcticui components to your project",
   "bin": {
-    "elasticui": "./dist/index.js"
+    "arcticui": "./dist/index.js"
   },
   "files": [
     "dist"
@@ -15,7 +15,7 @@
     "clean": "rm -rf dist"
   },
   "keywords": [
-    "elasticui",
+    "arcticui",
     "cli",
     "components",
     "ui"

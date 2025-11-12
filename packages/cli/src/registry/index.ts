@@ -1,26 +1,26 @@
-import * as fs from "fs"
-import * as path from "path"
+import * as fs from "fs";
+import * as path from "path";
 
 export interface RegistryItem {
-  name: string
-  type: "components:ui" | "components:component" | "components:example"
+  name: string;
+  type: "components:ui" | "components:component" | "components:example";
   files: Array<{
-    path: string
-    content: string
-    type: "registry:ui" | "registry:component" | "registry:example"
-  }>
-  dependencies?: string[]
-  registryDependencies?: string[]
+    path: string;
+    content: string;
+    type: "registry:ui" | "registry:component" | "registry:example";
+  }>;
+  dependencies?: string[];
+  registryDependencies?: string[];
 }
 
 export interface Registry {
-  [key: string]: RegistryItem
+  [key: string]: RegistryItem;
 }
 
 // Helper function to read component files
 function readComponentFile(componentName: string): string {
-  const filePath = path.join(__dirname, "components", `${componentName}.tsx`)
-  return fs.readFileSync(filePath, "utf-8")
+  const filePath = path.join(__dirname, "components", `${componentName}.tsx`);
+  return fs.readFileSync(filePath, "utf-8");
 }
 
 export const registry: Registry = {
@@ -37,13 +37,12 @@ export const registry: Registry = {
     dependencies: ["motion"],
     registryDependencies: [],
   },
-}
+};
 
 export function getRegistryItem(name: string): RegistryItem | null {
-  return registry[name] || null
+  return registry[name] || null;
 }
 
 export function getAllComponents(): string[] {
-  return Object.keys(registry)
+  return Object.keys(registry);
 }
-

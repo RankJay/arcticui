@@ -1,11 +1,11 @@
-# elasticui CLI
+# arcticui CLI
 
-Add elasticui components to your project with a single command.
+Add arcticui components to your project with a single command.
 
 ## Installation
 
 ```bash
-npx elasticui init
+npx arcticui init
 ```
 
 ## Usage
@@ -13,19 +13,19 @@ npx elasticui init
 ### Initialize your project
 
 ```bash
-npx elasticui init
+npx arcticui init
 ```
 
 ### Add components
 
 ```bash
-npx elasticui add radial-menu
+npx arcticui add radial-menu
 ```
 
 Add multiple components:
 
 ```bash
-npx elasticui add button card dialog
+npx arcticui add button card dialog
 ```
 
 ## Configuration

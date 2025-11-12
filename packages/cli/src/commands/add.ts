@@ -14,7 +14,7 @@ export async function add(components: string[], cwd: string = process.cwd()) {
   const config = await getConfig(cwd)
   if (!config) {
     logger.error("Configuration not found. Please run 'init' first:")
-    logger.info(`  ${chalk.cyan("npx elasticui init")}`)
+    logger.info(`  ${chalk.cyan("npx arcticui init")}`)
     return
   }
 

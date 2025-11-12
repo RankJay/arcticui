@@ -1,37 +1,39 @@
-import prompts from "prompts"
-import * as fs from "fs-extra"
-import * as path from "path"
-import chalk from "chalk"
-import { logger } from "../utils/logger"
-import { getConfig, writeConfig, type Config } from "../utils/get-config"
-import { getProjectInfo } from "../utils/get-project-info"
+import prompts from "prompts";
+import * as fs from "fs-extra";
+import * as path from "path";
+import chalk from "chalk";
+import { logger } from "../utils/logger";
+import { getConfig, writeConfig, type Config } from "../utils/get-config";
+import { getProjectInfo } from "../utils/get-project-info";
 
 export async function init(cwd: string = process.cwd()) {
-  logger.info("Initializing elasticui...")
-  logger.break()
+  logger.info("Initializing arcticui...");
+  logger.break();
 
   // Check if config already exists
-  const existingConfig = await getConfig(cwd)
+  const existingConfig = await getConfig(cwd);
   if (existingConfig) {
     const { overwrite } = await prompts({
       type: "confirm",
       name: "overwrite",
       message: "components.json already exists. Overwrite?",
       initial: false,
-    })
+    });
 
     if (!overwrite) {
-      logger.info("Initialization cancelled.")
-      return
+      logger.info("Initialization cancelled.");
+      return;
     }
   }
 
   // Get project info
-  const projectInfo = await getProjectInfo(cwd)
-  
+  const projectInfo = await getProjectInfo(cwd);
+
   if (projectInfo.isTurborepo && projectInfo.currentWorkspace) {
-    logger.info(`Detected Turborepo workspace: ${chalk.cyan(projectInfo.currentWorkspace)}`)
-    logger.break()
+    logger.info(
+      `Detected Turborepo workspace: ${chalk.cyan(projectInfo.currentWorkspace)}`
+    );
+    logger.break();
   }
 
   // Prompt user for configuration
@@ -93,17 +95,17 @@ export async function init(cwd: string = process.cwd()) {
       message: "Configure the import alias for utils:",
       initial: "@/lib/utils",
     },
-  ])
+  ]);
 
   // Check if user cancelled
   if (!options.typescript) {
-    logger.error("Initialization cancelled.")
-    return
+    logger.error("Initialization cancelled.");
+    return;
   }
 
   // Create config object
   const config: Config = {
-    $schema: "https://ui.elasticui.com/schema.json",
+    $schema: "https://ui.rankjay.com/schema.json",
     style: options.style,
     typescript: options.typescript,
     tailwind: {
@@ -115,16 +117,15 @@ export async function init(cwd: string = process.cwd()) {
       components: options.components,
       utils: options.utils,
     },
-  }
+  };
 
   // Write config file
-  await writeConfig(config, cwd)
+  await writeConfig(config, cwd);
 
-  logger.break()
-  logger.success("Configuration saved to components.json")
-  logger.break()
-  logger.info("You can now start adding components:")
-  logger.info(`  ${chalk.cyan("npx elasticui add radial-menu")}`)
-  logger.break()
+  logger.break();
+  logger.success("Configuration saved to components.json");
+  logger.break();
+  logger.info("You can now start adding components:");
+  logger.info(`  ${chalk.cyan("npx arcticui add radial-menu")}`);
+  logger.break();
 }
-

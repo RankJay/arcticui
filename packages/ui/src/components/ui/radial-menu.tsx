@@ -68,8 +68,8 @@ const DIMENSIONS = {
   OUTER_RING_OFFSET: 10,
   /** Additional tolerance for hover detection beyond outer radius */
   HOVER_TOLERANCE: 20,
-  /** Gap angle between segments in degrees */
-  SEGMENT_GAP: 10,
+  /** Gap angle between segments in degrees (currently disabled) */
+  SEGMENT_GAP: 0,
   /** Size of the icon container */
   ICON_SIZE: 32,
   /** Half of icon size for centering calculations */
@@ -555,7 +555,6 @@ export default function RadialMenu({
                         : COLORS.OUTER_RING_BASE
                     }
                     strokeWidth={DIMENSIONS.OUTER_RING_WIDTH}
-                    strokeLinecap="round"
                     initial={{ opacity: 0.4 }}
                     animate={{
                       stroke: isHovered

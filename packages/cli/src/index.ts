@@ -10,8 +10,8 @@ process.on("SIGTERM", () => process.exit(0))
 
 async function main() {
   const program = new Command()
-    .name("elasticui")
-    .description("Add elasticui components to your project")
+    .name("arcticui")
+    .description("Add arcticui components to your project")
     .version(
       packageJson.version || "0.1.0",
       "-v, --version",
@@ -41,7 +41,7 @@ async function main() {
 
       if (!components || components.length === 0) {
         console.error("Please specify at least one component to add")
-        console.log("Example: npx elasticui add radial-menu")
+        console.log("Example: npx arcticui add radial-menu")
         process.exit(1)
       }
 

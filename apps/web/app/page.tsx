@@ -1,14 +1,15 @@
 import { CopyIcon } from "lucide-react";
+import RadialMenuView from "@repo/ui/views/radial-menu";
 
 export default function Home() {
   return (
-    <div className="flex font-sans flex-col items-center justify-center h-auto w-full gap-20">
+    <div className="flex font-sans flex-col items-center justify-center h-auto w-full gap-20 max-md:gap-10 pb-10">
       <section className="flex flex-col items-center justify-center py-40 gap-4">
-        <h1 className="text-5xl font-medium tracking-tight text-neutral-300 text-center max-md:text-3xl">
+        <h1 className="text-5xl font-medium tracking-tight text-neutral-300 text-center max-md:text-4xl max-sm:text-3xl">
           creative <span className="text-orange-600">craftsmanship</span> for
           the web
         </h1>
-        <p className=" text-neutral-400 tracking-tight max-w-xl max-md:px-12 text-center max-md:text-sm">
+        <p className=" text-neutral-400 tracking-tight max-w-xl max-md:max-w-2xl max-sm:text-sm max-md:px-12 text-center">
           A handful of bold, experimental crafts that are customizable and
           extendable for your next voyage. Designed for the web, by the
           craftsmen.
@@ -43,11 +44,7 @@ export default function Home() {
             <CopyIcon className="w-4 h-4 text-neutral-400" />
           </div>
         </div>
-        <div className="flex flex-1 flex-col max-md:h-40 max-md:min-h-40 items-center justify-center text-center w-auto bg-neutral-900/40 border-neutral-800 rounded-2xl p-2 shadow-layered">
-          <span className="text-sm font-[460] text-neutral-700">
-            Click and hold to open the menu
-          </span>
-        </div>
+        <RadialMenuView />
       </div>
     </div>
   );

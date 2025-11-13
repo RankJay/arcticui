@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, AnimatePresence } from "motion/react";
 import React, {
   useState,
   useRef,
@@ -7,7 +8,6 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import { motion, AnimatePresence } from "motion/react";
 
 // ==================== Type Definitions ====================
 
@@ -68,8 +68,8 @@ const DIMENSIONS = {
   OUTER_RING_OFFSET: 10,
   /** Additional tolerance for hover detection beyond outer radius */
   HOVER_TOLERANCE: 20,
-  /** Gap angle between segments in degrees */
-  SEGMENT_GAP: 10,
+  /** Gap angle between segments in degrees (currently disabled) */
+  SEGMENT_GAP: 0,
   /** Size of the icon container */
   ICON_SIZE: 32,
   /** Half of icon size for centering calculations */
@@ -458,30 +458,6 @@ export default function RadialMenu({
           >
             {/* SVG filter definitions for optional visual effects */}
             <defs>
-              {/* Radial gradient for base segment state */}
-              <radialGradient
-                id="segmentGradientBase"
-                cx="0"
-                cy="0"
-                r={ARC_CONFIG.RADIUS}
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0%" stopColor="#2a2a2a" />
-                <stop offset="100%" stopColor="#232323" />
-              </radialGradient>
-
-              {/* Radial gradient for hovered segment state */}
-              <radialGradient
-                id="segmentGradientHover"
-                cx="0"
-                cy="0"
-                r={ARC_CONFIG.RADIUS}
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0%" stopColor="#3a3a3a" />
-                <stop offset="100%" stopColor="#282828" />
-              </radialGradient>
-
               {/* Glow effect filter (used when OPTIONAL_EFFECTS.SEGMENT_GLOW is enabled) */}
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -513,9 +489,7 @@ export default function RadialMenu({
                   <motion.path
                     d={segment.segmentPath}
                     fill={
-                      isHovered
-                        ? "url(#segmentGradientHover)"
-                        : "url(#segmentGradientBase)"
+                      isHovered ? COLORS.SEGMENT_HOVER : COLORS.SEGMENT_BASE
                     }
                     stroke={COLORS.SEGMENT_STROKE}
                     strokeWidth="2"
@@ -524,8 +498,8 @@ export default function RadialMenu({
                     initial={{ opacity: 1 }}
                     animate={{
                       fill: isHovered
-                        ? "url(#segmentGradientHover)"
-                        : "url(#segmentGradientBase)",
+                        ? COLORS.SEGMENT_HOVER
+                        : COLORS.SEGMENT_BASE,
                       opacity: 1,
                     }}
                     transition={ANIMATION_CONFIG.SEGMENT_TRANSITION}
@@ -555,7 +529,6 @@ export default function RadialMenu({
                         : COLORS.OUTER_RING_BASE
                     }
                     strokeWidth={DIMENSIONS.OUTER_RING_WIDTH}
-                    strokeLinecap="round"
                     initial={{ opacity: 0.4 }}
                     animate={{
                       stroke: isHovered

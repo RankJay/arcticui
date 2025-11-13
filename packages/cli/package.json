@@ -1,12 +1,39 @@
 {
-  "name": "arcticui",
-  "version": "0.1.0",
+  "name": "arcticui-cli",
+  "version": "0.1.1",
   "description": "CLI for adding arcticui components to your project",
+  "author": {
+    "name": "Jay Rank",
+    "url": "https://github.com/jayrank"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/RankJay/arcticui#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RankJay/arcticui.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/RankJay/arcticui/issues"
+  },
+  "keywords": [
+    "arcticui",
+    "cli",
+    "components",
+    "ui",
+    "react",
+    "tailwind",
+    "motion",
+    "javascript",
+    "typescript"
+  ],
   "bin": {
     "arcticui": "./dist/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc && npm run copy-components",
@@ -14,12 +41,6 @@
     "dev": "tsc --watch",
     "clean": "rm -rf dist"
   },
-  "keywords": [
-    "arcticui",
-    "cli",
-    "components",
-    "ui"
-  ],
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
@@ -40,5 +61,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

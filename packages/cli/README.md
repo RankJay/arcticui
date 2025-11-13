@@ -22,12 +22,6 @@ npx arcticui init
 npx arcticui add radial-menu
 ```
 
-Add multiple components:
-
-```bash
-npx arcticui add button card dialog
-```
-
 ## Configuration
 
 The `init` command creates a `components.json` file in your project root with your preferences.

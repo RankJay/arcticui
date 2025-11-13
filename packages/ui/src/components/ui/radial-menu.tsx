@@ -89,17 +89,17 @@ const DIMENSIONS = {
 /** Color palette for the radial menu */
 const COLORS = {
   /** Base segment fill color */
-  SEGMENT_BASE: "#232323",
+  SEGMENT_BASE: "#161616",
   /** Hovered segment fill color */
-  SEGMENT_HOVER: "#282828",
+  SEGMENT_HOVER: "#212121",
   /** Segment border color */
-  SEGMENT_STROKE: "#292929",
+  SEGMENT_STROKE: "#212121",
   /** Outer ring base color */
-  OUTER_RING_BASE: "#232323",
+  OUTER_RING_BASE: "#191919",
   /** Outer ring hovered color */
   OUTER_RING_HOVER: "#646464",
   /** Floating inner ring color */
-  INNER_RING: "#282828",
+  INNER_RING: "#565656",
   /** Icon color when not hovered */
   ICON_BASE: "text-neutral-500",
   /** Icon color when hovered */
@@ -458,30 +458,6 @@ export default function RadialMenu({
           >
             {/* SVG filter definitions for optional visual effects */}
             <defs>
-              {/* Radial gradient for base segment state */}
-              <radialGradient
-                id="segmentGradientBase"
-                cx="0"
-                cy="0"
-                r={ARC_CONFIG.RADIUS}
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0%" stopColor="#2a2a2a" />
-                <stop offset="100%" stopColor="#232323" />
-              </radialGradient>
-
-              {/* Radial gradient for hovered segment state */}
-              <radialGradient
-                id="segmentGradientHover"
-                cx="0"
-                cy="0"
-                r={ARC_CONFIG.RADIUS}
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0%" stopColor="#3a3a3a" />
-                <stop offset="100%" stopColor="#282828" />
-              </radialGradient>
-
               {/* Glow effect filter (used when OPTIONAL_EFFECTS.SEGMENT_GLOW is enabled) */}
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -513,9 +489,7 @@ export default function RadialMenu({
                   <motion.path
                     d={segment.segmentPath}
                     fill={
-                      isHovered
-                        ? "url(#segmentGradientHover)"
-                        : "url(#segmentGradientBase)"
+                      isHovered ? COLORS.SEGMENT_HOVER : COLORS.SEGMENT_BASE
                     }
                     stroke={COLORS.SEGMENT_STROKE}
                     strokeWidth="2"
@@ -524,8 +498,8 @@ export default function RadialMenu({
                     initial={{ opacity: 1 }}
                     animate={{
                       fill: isHovered
-                        ? "url(#segmentGradientHover)"
-                        : "url(#segmentGradientBase)",
+                        ? COLORS.SEGMENT_HOVER
+                        : COLORS.SEGMENT_BASE,
                       opacity: 1,
                     }}
                     transition={ANIMATION_CONFIG.SEGMENT_TRANSITION}

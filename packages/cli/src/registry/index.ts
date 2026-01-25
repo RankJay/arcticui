@@ -18,8 +18,8 @@ export interface Registry {
 }
 
 // Helper function to read component files
-function readComponentFile(componentName: string): string {
-  const filePath = path.join(__dirname, "components", `${componentName}.tsx`);
+function readComponentFile(componentName: string, extension: string = ".tsx"): string {
+  const filePath = path.join(__dirname, "components", `${componentName}${extension}`);
   return fs.readFileSync(filePath, "utf-8");
 }
 
@@ -35,6 +35,24 @@ export const registry: Registry = {
       },
     ],
     dependencies: ["motion"],
+    registryDependencies: [],
+  },
+  "ai-orb": {
+    name: "ai-orb",
+    type: "components:ui",
+    files: [
+      {
+        path: "components/ui/ai-orb.tsx",
+        content: readComponentFile("ai-orb", ".tsx"),
+        type: "registry:ui",
+      },
+      {
+        path: "components/ui/use-audio-pitch.ts",
+        content: readComponentFile("use-audio-pitch", ".ts"),
+        type: "registry:ui",
+      },
+    ],
+    dependencies: ["@paper-design/shaders-react@^0.0.71"],
     registryDependencies: [],
   },
 };

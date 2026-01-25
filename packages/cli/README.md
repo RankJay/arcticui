@@ -19,7 +19,7 @@ npx arcticui init
 ### Add components
 
 ```bash
-npx arcticui add radial-menu
+npx arcticui add radial-menu ai-orb
 ```
 
 ## Configuration

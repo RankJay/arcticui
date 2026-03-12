@@ -22,7 +22,7 @@ export function ComponentDescription({
       data-slot="component-description"
       className={cn(
         "text-sm font-[420] text-neutral-400 max-w-[500px]",
-        className
+        className,
       )}
       {...props}
     />
@@ -38,7 +38,7 @@ export function ComponentTag({
       data-slot="component-tag"
       className={cn(
         "text-[13px] font-[420] text-neutral-400 bg-neutral-800/80 leading-5 px-1.5 py-0 rounded-md",
-        className
+        className,
       )}
       {...props}
     />

@@ -31,7 +31,7 @@ export async function init(cwd: string = process.cwd()) {
 
   if (projectInfo.isTurborepo && projectInfo.currentWorkspace) {
     logger.info(
-      `Detected Turborepo workspace: ${chalk.cyan(projectInfo.currentWorkspace)}`
+      `Detected Turborepo workspace: ${chalk.cyan(projectInfo.currentWorkspace)}`,
     );
     logger.break();
   }

@@ -178,7 +178,7 @@ function normalizeAngle(angle: number): number {
  */
 function calculateSegmentAngles(
   index: number,
-  totalItems: number
+  totalItems: number,
 ): ArcSegmentAngles {
   const segmentAngle = ARC_CONFIG.TOTAL_ARC / totalItems;
   const startAngle = ARC_CONFIG.START_ANGLE + index * segmentAngle;
@@ -237,7 +237,7 @@ export default function RadialMenu({
     return Array.from({ length: items.length }, (_, index) => {
       const { startAngle, endAngle, midAngle } = calculateSegmentAngles(
         index,
-        items.length
+        items.length,
       );
 
       /**
@@ -300,7 +300,7 @@ export default function RadialMenu({
     if (triggerElement) {
       triggerElement.addEventListener(
         "mousedown",
-        handleMouseDown as EventListener
+        handleMouseDown as EventListener,
       );
     }
 
@@ -310,7 +310,7 @@ export default function RadialMenu({
         if (triggerElement) {
           triggerElement.removeEventListener(
             "mousedown",
-            handleMouseDown as EventListener
+            handleMouseDown as EventListener,
           );
         }
       };
@@ -420,7 +420,7 @@ export default function RadialMenu({
       if (triggerElement) {
         triggerElement.removeEventListener(
           "mousedown",
-          handleMouseDown as EventListener
+          handleMouseDown as EventListener,
         );
       }
       window.removeEventListener("mousemove", handleMouseMove);

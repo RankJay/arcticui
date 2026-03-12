@@ -17,7 +17,7 @@ export function CopyComponent({
     <CopyIcon
       className={cn(
         "w-4 h-4 text-neutral-400 hover:text-neutral-100 cursor-pointer",
-        className
+        className,
       )}
       {...props}
       onClick={handleCopy}

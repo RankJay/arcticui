@@ -1,6 +1,6 @@
-import * as fs from "fs-extra"
-import * as path from "path"
-import { z } from "zod"
+import * as fs from "fs-extra";
+import * as path from "path";
+import { z } from "zod";
 
 export const configSchema = z.object({
   $schema: z.string().optional(),
@@ -15,27 +15,31 @@ export const configSchema = z.object({
     components: z.string(),
     utils: z.string(),
   }),
-})
+});
 
-export type Config = z.infer<typeof configSchema>
+export type Config = z.infer<typeof configSchema>;
 
-export async function getConfig(cwd: string = process.cwd()): Promise<Config | null> {
+export async function getConfig(
+  cwd: string = process.cwd(),
+): Promise<Config | null> {
   try {
-    const configPath = path.join(cwd, "components.json")
-    
+    const configPath = path.join(cwd, "components.json");
+
     if (!fs.existsSync(configPath)) {
-      return null
+      return null;
     }
 
-    const config = await fs.readJSON(configPath)
-    return configSchema.parse(config)
+    const config = await fs.readJSON(configPath);
+    return configSchema.parse(config);
   } catch (error) {
-    return null
+    return null;
   }
 }
 
-export async function writeConfig(config: Config, cwd: string = process.cwd()): Promise<void> {
-  const configPath = path.join(cwd, "components.json")
-  await fs.writeJSON(configPath, config, { spaces: 2 })
+export async function writeConfig(
+  config: Config,
+  cwd: string = process.cwd(),
+): Promise<void> {
+  const configPath = path.join(cwd, "components.json");
+  await fs.writeJSON(configPath, config, { spaces: 2 });
 }
-

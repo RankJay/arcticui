@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from "react";
 
 export interface UseAudioPitchOptions {
   minPitch?: number;
@@ -18,7 +18,9 @@ export interface UseAudioPitchReturn {
   stopRecording: () => void;
 }
 
-export function useAudioPitch(options: UseAudioPitchOptions = {}): UseAudioPitchReturn {
+export function useAudioPitch(
+  options: UseAudioPitchOptions = {},
+): UseAudioPitchReturn {
   const {
     minPitch = 80,
     maxPitch = 1000,
@@ -30,7 +32,7 @@ export function useAudioPitch(options: UseAudioPitchOptions = {}): UseAudioPitch
 
   const [speed, setSpeed] = useState(minSpeed);
   const [isRecording, setIsRecording] = useState(false);
-  
+
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const audioIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -72,15 +74,21 @@ export function useAudioPitch(options: UseAudioPitchOptions = {}): UseAudioPitch
 
       return frequency;
     },
-    [minPitch, maxPitch]
+    [minPitch, maxPitch],
   );
 
   // Map pitch (Hz) to speed range
-  const mapPitchToSpeed = useCallback((pitch: number): number => {
-    const normalized = Math.max(0, Math.min(1, (pitch - minPitch) / (maxPitch - minPitch)));
-    const curved = Math.sqrt(normalized);
-    return minSpeed + curved * (maxSpeed - minSpeed);
-  }, [minPitch, maxPitch, minSpeed, maxSpeed]);
+  const mapPitchToSpeed = useCallback(
+    (pitch: number): number => {
+      const normalized = Math.max(
+        0,
+        Math.min(1, (pitch - minPitch) / (maxPitch - minPitch)),
+      );
+      const curved = Math.sqrt(normalized);
+      return minSpeed + curved * (maxSpeed - minSpeed);
+    },
+    [minPitch, maxPitch, minSpeed, maxSpeed],
+  );
 
   const processAudio = useCallback(() => {
     if (!analyserRef.current || !audioContextRef.current) return;
@@ -92,7 +100,7 @@ export function useAudioPitch(options: UseAudioPitchOptions = {}): UseAudioPitch
 
     const pitch = detectPitch(
       analyserRef.current,
-      audioContextRef.current.sampleRate
+      audioContextRef.current.sampleRate,
     );
 
     if (pitch > 200) {
@@ -138,7 +146,7 @@ export function useAudioPitch(options: UseAudioPitchOptions = {}): UseAudioPitch
       audioIntervalRef.current = setInterval(processAudio, updateInterval);
       processAudio();
     } catch (error) {
-      console.error('Error accessing microphone:', error);
+      console.error("Error accessing microphone:", error);
     }
   }, [processAudio, updateInterval]);
 

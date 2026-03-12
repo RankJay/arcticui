@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { MeshGradient } from '@paper-design/shaders-react';
-import React from 'react';
+import { MeshGradient } from "@paper-design/shaders-react";
+import React from "react";
 
 export interface AIOrbProps {
   speed?: number;
@@ -14,11 +14,11 @@ export interface AIOrbProps {
   grainOverlay?: number;
 }
 
-export function AIOrb({ 
-  speed = 1, 
-  colors = ['#52b7ff', '#ffffff', '#0084ff', '#005eff'],
+export function AIOrb({
+  speed = 1,
+  colors = ["#52b7ff", "#ffffff", "#0084ff", "#005eff"],
   size = 160,
-  className = 'size-40 rounded-full',
+  className = "size-40 rounded-full",
   distortion = 0.5,
   swirl = 1,
   grainMixer = 0.65,

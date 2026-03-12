@@ -18,8 +18,15 @@ export interface Registry {
 }
 
 // Helper function to read component files
-function readComponentFile(componentName: string, extension: string = ".tsx"): string {
-  const filePath = path.join(__dirname, "components", `${componentName}${extension}`);
+function readComponentFile(
+  componentName: string,
+  extension: string = ".tsx",
+): string {
+  const filePath = path.join(
+    __dirname,
+    "components",
+    `${componentName}${extension}`,
+  );
   return fs.readFileSync(filePath, "utf-8");
 }
 

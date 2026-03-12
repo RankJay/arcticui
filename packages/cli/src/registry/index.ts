@@ -62,6 +62,19 @@ export const registry: Registry = {
     dependencies: ["@paper-design/shaders-react@^0.0.71"],
     registryDependencies: [],
   },
+  "liquid-glass": {
+    name: "liquid-glass",
+    type: "components:ui",
+    files: [
+      {
+        path: "components/ui/liquid-glass.tsx",
+        content: readComponentFile("liquid-glass"),
+        type: "registry:ui",
+      },
+    ],
+    dependencies: [],
+    registryDependencies: [],
+  },
 };
 
 export function getRegistryItem(name: string): RegistryItem | null {

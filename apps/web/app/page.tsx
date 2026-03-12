@@ -1,6 +1,7 @@
 import RadialMenuView from "@repo/ui/views/radial-menu";
 import HeroSection from "../views/hero";
 import AIOrbView from "@repo/ui/views/ai-orb";
+import LiquidGlassView from "@repo/ui/views/liquid-glass";
 import {
   ComponentDescription,
   ComponentHeading,
@@ -62,6 +63,31 @@ export default function Home() {
             </div>
           </div>
           <AIOrbView />
+        </div>
+        <div className="flex w-full px-40 h-auto gap-20 max-lg:flex-col max-md:px-12">
+          <div className="flex flex-col gap-2">
+            <ComponentHeading>Liquid Glass</ComponentHeading>
+            <ComponentDescription>
+              A CSS displacement-map glass effect that warps whatever is behind
+              it. Drag the panel around to see the lens distortion shift in
+              real time. No WebGL — just SVG filters and{" "}
+              <code>backdrop-filter</code>.
+            </ComponentDescription>
+            <div className="flex gap-2 mt-2">
+              <ComponentTag>react</ComponentTag>
+              <ComponentTag>svg filters</ComponentTag>
+              <ComponentTag>backdrop-filter</ComponentTag>
+            </div>
+            <div className="flex items-center justify-between gap-2 mt-6 bg-neutral-800/20 shadow-layered rounded-xl p-3">
+              <span className="font-mono text-sm tracking-tight">
+                <span className="text-orange-600">npx</span>{" "}
+                <span className="text-neutral-400">arcticui</span> add
+                liquid-glass
+              </span>
+              <CopyComponent command="npx arcticui add liquid-glass" />
+            </div>
+          </div>
+          <LiquidGlassView />
         </div>
       </div>
     </div>

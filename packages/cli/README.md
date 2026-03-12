@@ -1,27 +1,55 @@
 # arcticui CLI
 
-Add arcticui components to your project with a single command.
+Add arcticui components to your React + Tailwind project.
 
-## Installation
+**Requirements:** Node 18+, existing React project with Tailwind CSS.
+
+## Quick start
+
+```bash
+npx arcticui init
+npx arcticui add radial-menu liquid-glass
+```
+
+## Commands
+
+### init
+
+Creates `components.json` in your project root and configures paths.
 
 ```bash
 npx arcticui init
 ```
 
-## Usage
+### add
 
-### Initialize your project
-
-```bash
-npx arcticui init
-```
-
-### Add components
+Adds one or more components. Run from your project root.
 
 ```bash
-npx arcticui add radial-menu ai-orb
+npx arcticui add <component-name>
+npx arcticui add radial-menu ai-orb liquid-glass
 ```
+
+**Options:**
+
+- `-c, --cwd <path>` — working directory (default: current directory)
+
+## Available components
+
+| Component      | Description                                                     |
+| -------------- | --------------------------------------------------------------- |
+| `radial-menu`  | Circular menu that expands around the touch point               |
+| `ai-orb`       | Audio-reactive orb with pitch detection and mesh gradients      |
+| `liquid-glass` | Draggable glass lens using SVG displacement and backdrop-filter |
 
 ## Configuration
 
-The `init` command creates a `components.json` file in your project root with your preferences.
+`init` creates `components.json` with your component path and style preferences. Edit it to change where files are written.
+
+## Links
+
+- [arcticui](https://arcticui-web.vercel.app/) — source & demo
+
+---
+
+[arcticui](https://github.com/RankJay/arcticui)

@@ -37,8 +37,20 @@ export default function LiquidGlassView() {
     if (!dragging.current || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     setPos({
-      x: Math.max(0, Math.min(e.clientX - rect.left - offset.current.x, rect.width - GLASS_SIZE)),
-      y: Math.max(0, Math.min(e.clientY - rect.top - offset.current.y, rect.height - GLASS_SIZE)),
+      x: Math.max(
+        0,
+        Math.min(
+          e.clientX - rect.left - offset.current.x,
+          rect.width - GLASS_SIZE,
+        ),
+      ),
+      y: Math.max(
+        0,
+        Math.min(
+          e.clientY - rect.top - offset.current.y,
+          rect.height - GLASS_SIZE,
+        ),
+      ),
     });
   }
 
@@ -77,10 +89,11 @@ export default function LiquidGlassView() {
             key={s.value}
             type="button"
             onClick={() => setSurface(s.value)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium shadow-layered transition-colors ${surface === s.value
-              ? "bg-neutral-700/60 text-white shadow-layered"
-              : "bg-neutral-800/80 text-neutral-400 hover:text-neutral-200 shadow-layered"
-              }`}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium shadow-layered transition-colors ${
+              surface === s.value
+                ? "bg-neutral-700/60 text-white shadow-layered"
+                : "bg-neutral-800/80 text-neutral-400 hover:text-neutral-200 shadow-layered"
+            }`}
           >
             {s.label}
           </button>

@@ -69,9 +69,9 @@ export default function Home() {
             <ComponentHeading>Liquid Glass</ComponentHeading>
             <ComponentDescription>
               A CSS displacement-map glass effect that warps whatever is behind
-              it. Drag the panel around to see the lens distortion shift in
-              real time. No WebGL — just SVG filters and{" "}
-              <code>backdrop-filter</code>.
+              it. Drag the panel around to see the lens distortion shift in real
+              time. No WebGL — just SVG filters and <code>backdrop-filter</code>
+              .
             </ComponentDescription>
             <div className="flex gap-2 mt-2">
               <ComponentTag>react</ComponentTag>

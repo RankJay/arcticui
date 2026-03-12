@@ -1,6 +1,6 @@
 {
   "name": "arcticui-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CLI for adding arcticui components to your project",
   "author": {
     "name": "Jay Rank",

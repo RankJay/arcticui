@@ -57,8 +57,7 @@ function surfaceHeight(x: number, type: LiquidGlassSurface): number {
   const t = Math.max(0, Math.min(1, x));
   const convexCircle = () => Math.sqrt(1 - (1 - t) ** 2);
   const convexSquircle = () => (1 - (1 - t) ** 4) ** 0.25;
-  const convex =
-    type === "convex-squircle" ? convexSquircle : convexCircle;
+  const convex = type === "convex-squircle" ? convexSquircle : convexCircle;
 
   switch (type) {
     case "convex-circle":
@@ -127,10 +126,7 @@ function buildPhysicsDisplacementMap(
   scaleRatio: number,
 ): { dataUrl: string; scale: number } {
   const displacements = precomputeDisplacements(surfaceType);
-  const maxMag = Math.max(
-    ...Array.from(displacements).map(Math.abs),
-    0.001,
-  );
+  const maxMag = Math.max(...Array.from(displacements).map(Math.abs), 0.001);
 
   const aspect = width / height;
   const sdfW = 1;
@@ -284,10 +280,7 @@ export const LiquidGlass = React.forwardRef<HTMLDivElement, LiquidGlassProps>(
           }
           if (feDispInternalRef.current) {
             const s = Math.min(Math.max(0, doubleRefractionStrength), 0.5);
-            feDispInternalRef.current.setAttribute(
-              "scale",
-              String(-scale * s),
-            );
+            feDispInternalRef.current.setAttribute("scale", String(-scale * s));
           }
         }
       };
@@ -400,11 +393,7 @@ export const LiquidGlass = React.forwardRef<HTMLDivElement, LiquidGlassProps>(
                 type="matrix"
                 values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.2 0"
               />
-              <feBlend
-                in="primary"
-                in2="ghostFaded"
-                mode="normal"
-              />
+              <feBlend in="primary" in2="ghostFaded" mode="normal" />
             </filter>
           </defs>
         </svg>

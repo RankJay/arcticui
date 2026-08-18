@@ -24,12 +24,13 @@
         "zod": "^4.4.3",
       },
       "devDependencies": {
+        "@oxlint/plugins": "1.78.0",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^26",
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "oxfmt": "^0.63.0",
-        "oxlint": "^1.78.0",
+        "oxlint": "1.78.0",
         "tailwindcss": "^4",
         "typescript": "^7",
       },
@@ -338,6 +339,8 @@
     "@oxlint/binding-win32-ia32-msvc": ["@oxlint/binding-win32-ia32-msvc@1.78.0", "", { "os": "win32", "cpu": "ia32" }, "sha512-zcuXFVrEFHIafRfkCQT8w/Xe41o07ozl/vwHq7p94vB29xVzsB0sZGYORU1jhcYKv3Lr0J3HbJ2T4fHH5rWmvA=="],
 
     "@oxlint/binding-win32-x64-msvc": ["@oxlint/binding-win32-x64-msvc@1.78.0", "", { "os": "win32", "cpu": "x64" }, "sha512-Sb5ocmLSuYeOuXd+CFOToGKp/gjXUEWDnvIGwhnh8aq8wY4TMmEnKnvbogSW7RdMZv77JSARduS7/gv+khYEjA=="],
+
+    "@oxlint/plugins": ["@oxlint/plugins@1.78.0", "", {}, "sha512-Ypt8KeRYw+4jUtlPirfcHWMrn5ms12VrrFPD+Mds477/7tJxG1Kcz2Yrg2nVcTQEUx/GdlhS+BUg1kmxNm04Ug=="],
 
     "@paper-design/shaders": ["@paper-design/shaders@0.0.80", "", {}, "sha512-pcabvt5xDlFoEhpjUj4b1tGJMfqb0i5mXifWMNQf6z7FoOJYxYDo7F8R6k0JAh5D/7ouxjX5+N0cIq5WURyQ1Q=="],
 

@@ -279,17 +279,21 @@ export default function RadialMenu({ items, onSelect, triggerRef }: RadialMenuPr
 
   /** Unified effect: Handle all event listeners (optimized with single useEffect) */
   useEffect(() => {
+    const onMouseDown = (e: MouseEvent) => {
+      handleMouseDown(e);
+    };
+
     // Attach listener to external trigger if provided
     const triggerElement = triggerRef?.current;
     if (triggerElement) {
-      triggerElement.addEventListener("mousedown", handleMouseDown as EventListener);
+      triggerElement.addEventListener("mousedown", onMouseDown);
     }
 
     // Only add menu interaction listeners when menu is open
     if (!isOpen) {
       return () => {
         if (triggerElement) {
-          triggerElement.removeEventListener("mousedown", handleMouseDown as EventListener);
+          triggerElement.removeEventListener("mousedown", onMouseDown);
         }
       };
     }
@@ -388,7 +392,7 @@ export default function RadialMenu({ items, onSelect, triggerRef }: RadialMenuPr
     return () => {
       // Clean up all listeners
       if (triggerElement) {
-        triggerElement.removeEventListener("mousedown", handleMouseDown as EventListener);
+        triggerElement.removeEventListener("mousedown", onMouseDown);
       }
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);

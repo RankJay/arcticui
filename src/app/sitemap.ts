@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const docPages: MetadataRoute.Sitemap = source.getPages().map((page) => ({
     url: new URL(page.url, SITE_URL).toString(),
     lastModified: now,
-    changeFrequency: "weekly" as const,
+    changeFrequency: "weekly",
     priority: 0.8,
   }));
 
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const markdownPages: MetadataRoute.Sitemap = source.getPages().map((page) => ({
     url: new URL(`${page.url}.md`, SITE_URL).toString(),
     lastModified: now,
-    changeFrequency: "weekly" as const,
+    changeFrequency: "weekly",
     priority: 0.7,
   }));
 

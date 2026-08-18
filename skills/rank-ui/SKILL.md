@@ -15,17 +15,16 @@ Rank UI is a collection of copy-paste React components designed for modern produ
 
 ## Quick Decision Guide
 
-| Component          | Use Case                                                                     | Installation Command                       | Live Markdown Doc                                                |
-| :----------------- | :--------------------------------------------------------------------------- | :----------------------------------------- | :--------------------------------------------------------------- |
-| **Radial Menu**    | Circular/orbital context actions fanning around a trigger button or cursor   | `npx shadcn@latest add @rank/radial-menu`  | [`radial-menu.md`](https://ui.rankjay.com/docs/radial-menu.md)   |
-| **AI Orb**         | Mesh-gradient animated sphere for AI, voice assistants, and audio reactivity | `npx shadcn@latest add @rank/ai-orb`       | [`ai-orb.md`](https://ui.rankjay.com/docs/ai-orb.md)             |
-| **Liquid Glass**   | Refractive glassmorphic panel with SVG distortion filters and backdrop blur  | `npx shadcn@latest add @rank/liquid-glass` | [`liquid-glass.md`](https://ui.rankjay.com/docs/liquid-glass.md) |
-| **All Components** | Install complete Rank UI suite                                               | `npx shadcn@latest add @rank/ui`           | [`installation.md`](https://ui.rankjay.com/docs/installation.md) |
+| Component | Use Case | Installation Command | Live Markdown Doc |
+| :--- | :--- | :--- | :--- |
+| **Radial Menu** | Circular/orbital context actions fanning around a trigger button or cursor | `npx shadcn@latest add @rank/radial-menu` | [`radial-menu.md`](https://ui.rankjay.com/docs/radial-menu.md) |
+| **AI Orb** | Mesh-gradient animated sphere for AI, voice assistants, and audio reactivity | `npx shadcn@latest add @rank/ai-orb` | [`ai-orb.md`](https://ui.rankjay.com/docs/ai-orb.md) |
+| **Liquid Glass** | Refractive glassmorphic panel with SVG distortion filters and backdrop blur | `npx shadcn@latest add @rank/liquid-glass` | [`liquid-glass.md`](https://ui.rankjay.com/docs/liquid-glass.md) |
+| **All Components** | Install complete Rank UI suite | `npx shadcn@latest add @rank/ui` | [`installation.md`](https://ui.rankjay.com/docs/installation.md) |
 
 ## Registry Setup & Prerequisites
 
 Make sure `components.json` is configured with the expected aliases:
-
 ```json
 {
   "aliases": {
@@ -41,7 +40,6 @@ Make sure `components.json` is configured with the expected aliases:
 ## Detailed References
 
 For in-depth component props, code snippets, and configuration guides, refer to:
-
 - [Component Specifications](references/components.md)
 - [Registry Setup Guide](references/registry-setup.md)
 - [Full LLM Documentation](https://ui.rankjay.com/llms-full.txt)

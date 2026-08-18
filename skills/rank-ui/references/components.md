@@ -12,13 +12,11 @@ Detailed specifications and usage guidelines for each Rank UI component.
 - **Dependencies:** `motion`, `lucide-react`, `clsx`, `tailwind-merge`
 
 ### Install
-
 ```bash
 npx shadcn@latest add @rank/radial-menu
 ```
 
 ### Usage Example
-
 ```tsx
 import RadialMenu from "@/registry/rank/ui/radial-menu";
 import { Copy, Share2, Trash2, Edit3 } from "lucide-react";
@@ -67,13 +65,11 @@ export function Example() {
 - **Included Hooks:** `use-audio-pitch`
 
 ### Install
-
 ```bash
 npx shadcn@latest add @rank/ai-orb
 ```
 
 ### Usage Example
-
 ```tsx
 import { AIOrb } from "@/registry/rank/ui/ai-orb";
 import { useAudioPitch } from "@/registry/rank/hooks/use-audio-pitch";
@@ -83,7 +79,11 @@ export function VoiceAssistantOrb() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <AIOrb speed={isListening ? 1.0 + pitch * 2 : 0.4} color="#8B5CF6" size={280} />
+      <AIOrb
+        speed={isListening ? 1.0 + pitch * 2 : 0.4}
+        color="#8B5CF6"
+        size={280}
+      />
       <button
         onClick={isListening ? stopListening : startListening}
         className="rounded-lg bg-secondary px-4 py-2 text-sm font-medium"
@@ -105,13 +105,11 @@ export function VoiceAssistantOrb() {
 - **Dependencies:** `clsx`, `tailwind-merge`
 
 ### Install
-
 ```bash
 npx shadcn@latest add @rank/liquid-glass
 ```
 
 ### Usage Example
-
 ```tsx
 import { LiquidGlass } from "@/registry/rank/ui/liquid-glass";
 

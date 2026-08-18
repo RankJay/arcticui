@@ -118,9 +118,10 @@ export function useAudioPitch(options: UseAudioPitchOptions = {}): UseAudioPitch
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       streamRef.current = stream;
 
+      // SAFETY: Fallback for Safari/WebKit legacy AudioContext constructor on window
       const AudioContextClass =
         window.AudioContext ||
-        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       const audioContext = new AudioContextClass();
       const analyser = audioContext.createAnalyser();
       const microphone = audioContext.createMediaStreamSource(stream);

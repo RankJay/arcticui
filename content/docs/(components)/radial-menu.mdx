@@ -1,0 +1,31 @@
+---
+title: Radial Menu
+description: Context menu that fans items in a radial arc around the trigger.
+---
+
+import { RadialMenuDemo } from "@/components/docs/demos/radial-menu-demo";
+import { ComponentPreview } from "@/components/docs/component-preview";
+
+## Preview
+
+<ComponentPreview>
+  <RadialMenuDemo />
+</ComponentPreview>
+
+## Install
+
+```npm
+npx shadcn@latest add @rank/radial-menu
+```
+
+## Usage
+
+```tsx
+import RadialMenu from "@/registry/rank/ui/radial-menu";
+```
+
+Pass a `triggerRef` to the element that opens the menu. Each item needs an `id`, `label`, and Lucide-compatible `icon` component.
+
+## API
+
+<AutoTypeTable path="./src/registry/rank/ui/radial-menu.tsx" name="RadialMenuProps" />

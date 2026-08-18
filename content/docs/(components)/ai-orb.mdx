@@ -1,0 +1,31 @@
+---
+title: AI Orb
+description: Animated mesh-gradient orb for AI and voice interfaces.
+---
+
+import { AIOrbDemo } from "@/components/docs/demos/ai-orb-demo";
+import { ComponentPreview } from "@/components/docs/component-preview";
+
+## Preview
+
+<ComponentPreview>
+  <AIOrbDemo />
+</ComponentPreview>
+
+## Install
+
+```npm
+npx shadcn@latest add @rank/ai-orb
+```
+
+## Usage
+
+```tsx
+import { AIOrb } from "@/registry/rank/ui/ai-orb";
+```
+
+The install also adds `use-audio-pitch` for microphone-driven speed changes.
+
+## API
+
+<AutoTypeTable path="./src/registry/rank/ui/ai-orb.tsx" name="AIOrbProps" />

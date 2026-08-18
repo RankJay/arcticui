@@ -1,0 +1,31 @@
+---
+title: Installation
+description: Add Rank UI components with the shadcn CLI.
+---
+
+Rank UI publishes to `https://ui.rankjay.com/r`.
+
+## All components
+
+```npm
+npx shadcn@latest add @rank/ui
+```
+
+## Single component
+
+```npm
+npx shadcn@latest add @rank/radial-menu
+```
+
+```npm
+npx shadcn@latest add @rank/ai-orb
+```
+
+```npm
+npx shadcn@latest add @rank/liquid-glass
+```
+
+Your project needs shadcn/ui configured first. Rank UI expects these aliases in `components.json`:
+
+- `@/registry/rank/ui` for components
+- `@/registry/rank/hooks` for hooks

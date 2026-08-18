@@ -1,0 +1,31 @@
+---
+title: Liquid Glass
+description: SVG filter glass surface with configurable refraction and blur.
+---
+
+import { LiquidGlassDemo } from "@/components/docs/demos/liquid-glass-demo";
+import { ComponentPreview } from "@/components/docs/component-preview";
+
+## Preview
+
+<ComponentPreview className="bg-muted/30">
+  <LiquidGlassDemo />
+</ComponentPreview>
+
+## Install
+
+```npm
+npx shadcn@latest add @rank/liquid-glass
+```
+
+## Usage
+
+```tsx
+import { LiquidGlass } from "@/registry/rank/ui/liquid-glass";
+```
+
+Wrap content inside the panel. Put colorful imagery or gradients behind it so refraction reads clearly.
+
+## API
+
+<AutoTypeTable path="./src/registry/rank/ui/liquid-glass.tsx" name="LiquidGlassProps" />

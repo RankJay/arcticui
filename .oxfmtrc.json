@@ -1,0 +1,86 @@
+{
+    "$schema": "./node_modules/oxfmt/configuration_schema.json",
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "jsxSingleQuote": false,
+    "quoteProps": "as-needed",
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "insertFinalNewline": true,
+    "objectWrap": "preserve",
+    "htmlWhitespaceSensitivity": "css",
+    "embeddedLanguageFormatting": "auto",
+    "proseWrap": "preserve",
+    "singleAttributePerLine": false,
+    "sortPackageJson": {
+        "sortScripts": false
+    },
+    "sortTailwindcss": {
+        "functions": [
+            "cn",
+            "clsx",
+            "cva",
+            "tw"
+        ]
+    },
+    "sortImports": {
+        "order": "asc",
+        "ignoreCase": true,
+        "newlinesBetween": true,
+        "groups": [
+            "side_effect",
+            "builtin",
+            "external",
+            {
+                "newlinesBetween": true
+            },
+            "internal",
+            {
+                "newlinesBetween": true
+            },
+            [
+                "parent",
+                "sibling",
+                "index"
+            ],
+            "style",
+            "unknown"
+        ],
+        "customGroups": [
+            {
+                "groupName": "next",
+                "selector": "external",
+                "elementNamePattern": [
+                    "next",
+                    "next/*"
+                ]
+            },
+            {
+                "groupName": "react",
+                "selector": "external",
+                "elementNamePattern": [
+                    "react",
+                    "react-*",
+                    "react/*"
+                ]
+            }
+        ],
+        "internalPattern": [
+            "@/*"
+        ],
+        "sortSideEffects": false
+    },
+    "ignorePatterns": [
+        ".next/**",
+        "node_modules/**",
+        "public/**",
+        "*.min.js",
+        "*.min.css"
+    ]
+}

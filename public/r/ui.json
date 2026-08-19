@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ui",
+  "title": "Rank UI",
+  "description": "Rank UI components.",
+  "dependencies": [
+    "motion",
+    "@paper-design/shaders-react"
+  ],
+  "registryDependencies": [
+    "@rank/radial-menu",
+    "@rank/ai-orb",
+    "@rank/liquid-glass"
+  ],
+  "type": "registry:style"
+}

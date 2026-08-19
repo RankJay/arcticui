@@ -1,0 +1,263 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": [
+        "react",
+        "typescript",
+        "unicorn",
+        "import",
+        "jsx-a11y",
+        "nextjs",
+        "promise",
+        "oxc"
+    ],
+    "env": {
+        "browser": true,
+        "es2022": true,
+        "node": true
+    },
+    "settings": {
+        "react": {
+            "version": "19.0"
+        },
+        "jsx-a11y": {
+            "components": {
+                "Link": "a",
+                "Image": "img",
+                "Button": "button"
+            }
+        }
+    },
+    "categories": {
+        "correctness": "error",
+        "suspicious": "warn"
+    },
+    "rules": {
+        "no-console": [
+            "warn",
+            {
+                "allow": [
+                    "warn",
+                    "error"
+                ]
+            }
+        ],
+        "no-debugger": "error",
+        "no-alert": "error",
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "no-var": "error",
+        "prefer-const": "error",
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ],
+        "no-undef": "error",
+        "no-shadow": "error",
+        "no-implicit-coercion": "error",
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
+        ],
+        "no-nested-ternary": "error",
+        "no-else-return": [
+            "error",
+            {
+                "allowElseIf": false
+            }
+        ],
+        "no-labels": "error",
+        "no-with": "error",
+        "prefer-template": "error",
+        "object-shorthand": [
+            "error",
+            "always"
+        ],
+        "prefer-arrow-callback": "error",
+        "no-duplicate-imports": "error",
+        "no-useless-rename": "error",
+        "no-useless-constructor": "error",
+        "no-useless-return": "error",
+        "no-throw-literal": "error",
+        "no-promise-executor-return": "error",
+        "require-await": "error",
+        "no-await-in-loop": "warn",
+        "typescript/no-explicit-any": "error",
+        "typescript/no-non-null-assertion": "error",
+        "typescript/no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ],
+        "typescript/consistent-type-imports": [
+            "error",
+            {
+                "prefer": "type-imports",
+                "fixStyle": "inline-type-imports"
+            }
+        ],
+        "typescript/no-import-type-side-effects": "error",
+        "typescript/ban-ts-comment": [
+            "error",
+            {
+                "ts-ignore": "allow-with-description",
+                "minimumDescriptionLength": 10
+            }
+        ],
+        "typescript/no-require-imports": "error",
+        "typescript/no-namespace": "error",
+        "typescript/prefer-as-const": "error",
+        "typescript/prefer-for-of": "error",
+        "typescript/array-type": [
+            "error",
+            {
+                "default": "array-simple"
+            }
+        ],
+        "react/react-in-jsx-scope": "off",
+        "react/self-closing-comp": [
+            "error",
+            {
+                "component": true,
+                "html": false
+            }
+        ],
+        "react/jsx-no-target-blank": [
+            "error",
+            {
+                "enforceDynamicLinks": "always"
+            }
+        ],
+        "react/jsx-key": [
+            "error",
+            {
+                "checkFragmentShorthand": true,
+                "checkKeyMustBeforeSpread": true
+            }
+        ],
+        "react/no-array-index-key": "warn",
+        "react/no-danger": "error",
+        "react/hook-use-state": "warn",
+        "react/no-unstable-nested-components": [
+            "error",
+            {
+                "allowAsProps": true
+            }
+        ],
+        "unicorn/prefer-node-protocol": "off",
+        "unicorn/no-array-for-each": "error",
+        "unicorn/prefer-includes": "error",
+        "unicorn/prefer-string-starts-ends-with": "error",
+        "unicorn/no-useless-undefined": "error",
+        "unicorn/no-null": "off",
+        "unicorn/filename-case": "off",
+        "unicorn/prefer-ternary": [
+            "warn",
+            "only-single-line"
+        ],
+        "unicorn/no-negated-condition": "error",
+        "unicorn/prefer-array-find": "error",
+        "unicorn/prefer-array-flat": "error",
+        "unicorn/prefer-array-flat-map": "error",
+        "import/no-duplicates": "error",
+        "import/no-self-import": "error",
+        "import/no-cycle": "error",
+        "import/no-unassigned-import": [
+            "error",
+            {
+                "allow": [
+                    "**/*.css"
+                ]
+            }
+        ],
+        "promise/no-return-wrap": "error",
+        "promise/no-new-statics": "error",
+        "promise/no-return-in-finally": "error",
+        "promise/valid-params": "error",
+        "jsx-a11y/alt-text": "error",
+        "jsx-a11y/anchor-has-content": "error",
+        "jsx-a11y/anchor-is-valid": "error",
+        "jsx-a11y/aria-props": "error",
+        "jsx-a11y/aria-proptypes": "error",
+        "jsx-a11y/aria-role": "error",
+        "jsx-a11y/aria-unsupported-elements": "error",
+        "jsx-a11y/click-events-have-key-events": "error",
+        "jsx-a11y/heading-has-content": "error",
+        "jsx-a11y/img-redundant-alt": "error",
+        "jsx-a11y/interactive-supports-focus": "error",
+        "jsx-a11y/label-has-associated-control": "error",
+        "jsx-a11y/no-autofocus": "warn",
+        "jsx-a11y/no-noninteractive-element-interactions": "warn",
+        "jsx-a11y/role-has-required-aria-props": "error",
+        "jsx-a11y/role-supports-aria-props": "error",
+        "nextjs/no-html-link-for-pages": "error",
+        "nextjs/no-img-element": "error",
+        "nextjs/no-sync-scripts": "error",
+        "nextjs/no-head-element": "error",
+        "nextjs/no-page-custom-font": "error",
+        "nextjs/no-css-tags": "error",
+        "nextjs/no-unwanted-polyfillio": "error",
+        "nextjs/google-font-display": "error",
+        "nextjs/google-font-preconnect": "error",
+        "nextjs/inline-script-id": "error",
+        "nextjs/no-script-component-in-head": "error",
+        "nextjs/no-styled-jsx-in-document": "error",
+        "nextjs/no-duplicate-head": "error",
+        "oxc/no-barrel-file": "warn",
+        "oxc/approx-constant": "error",
+        "oxc/bad-array-method-on-arguments": "error",
+        "oxc/erasing-op": "error",
+        "oxc/misrefactored-assign-op": "error",
+        "oxc/no-accumulating-spread": "warn",
+        "oxc/no-async-endpoint-handlers": "off",
+        "anti-slop/no-chained-type-assertions": "error",
+        "anti-slop/no-conditional-empty-object-spread": "error",
+        "anti-slop/no-known-value-widening": "error",
+        "anti-slop/no-module-mocking": "error",
+        "anti-slop/no-object-parameters": "error",
+        "anti-slop/no-reflect-apply": "error",
+        "anti-slop/no-reflect-get": "error",
+        "anti-slop/no-runtime-typeof": "error",
+        "anti-slop/no-shape-in-symbol-names": "error",
+        "anti-slop/no-unknown-parameters": "error",
+        "anti-slop/no-unknown-returns": "error",
+        "anti-slop/no-unknown-type-aliases": "error",
+        "anti-slop/no-unsafe-dictionary-type": "error",
+        "anti-slop/no-widen-then-assert": "error",
+        "anti-slop/require-safety-comment-for-type-assertion": "error"
+    },
+    "jsPlugins": [
+        {
+            "name": "anti-slop",
+            "specifier": "./tools/oxlint/anti-slop/index.ts"
+        }
+    ],
+    "ignorePatterns": [
+        ".next/**",
+        "node_modules/**",
+        "public/**",
+        "*.config.ts",
+        "*.config.mjs",
+        "next-env.d.ts",
+        ".agent/**",
+        ".agents/**",
+        ".claude/**",
+        ".codex/**",
+        ".continue/**",
+        ".cursor/**",
+        ".gemini/**",
+        ".opencode/**",
+        ".pi/**",
+        ".roo/**",
+        ".windsurf/**",
+        "tools/oxlint/anti-slop/**"
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry.json",
+    "name": "rank/ui",
+    "homepage": "https://ui.rankjay.com",
+    "items": [
+        {
+            "name": "ui",
+            "type": "registry:style",
+            "title": "Rank UI",
+            "description": "Rank UI components.",
+            "dependencies": [
+                "motion",
+                "@paper-design/shaders-react"
+            ],
+            "registryDependencies": [
+                "@rank/radial-menu",
+                "@rank/ai-orb",
+                "@rank/liquid-glass"
+            ]
+        },
+        {
+            "name": "radial-menu",
+            "type": "registry:ui",
+            "title": "Radial Menu",
+            "description": "A radial menu component.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "src/registry/rank/ui/radial-menu.tsx",
+                    "type": "registry:ui"
+                }
+            ]
+        },
+        {
+            "name": "ai-orb",
+            "type": "registry:ui",
+            "title": "AI Orb",
+            "description": "An AI orb component.",
+            "dependencies": ["@paper-design/shaders-react"],
+            "files": [
+                {
+                    "path": "src/registry/rank/ui/ai-orb.tsx",
+                    "type": "registry:ui"
+                },
+                {
+                    "path": "src/registry/rank/hooks/use-audio-pitch.ts",
+                    "type": "registry:hook"
+                }
+            ]
+        },
+        {
+            "name": "liquid-glass",
+            "type": "registry:ui",
+            "title": "Liquid Glass",
+            "description": "A liquid glass component.",
+            "files": [
+                {
+                    "path": "src/registry/rank/ui/liquid-glass.tsx",
+                    "type": "registry:ui"
+                }
+            ]
+        }
+    ]
+}

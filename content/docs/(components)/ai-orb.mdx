@@ -1,0 +1,31 @@
+---
+title: AI Orb
+description: An interactive animated orb component that responds to audio input, creating a mesmerizing visual experience. Features real-time audio pitch detection and smooth gradient animations powered by mesh gradients.
+---
+
+import { AIOrbDemo } from '@/components/docs/demos/ai-orb-demo';
+import { ComponentPreview } from '@/components/docs/component-preview';
+
+## Preview
+
+<ComponentPreview>
+  <AIOrbDemo />
+</ComponentPreview>
+
+## Install
+
+```npm
+npx shadcn@latest add @rank/ai-orb
+```
+
+## Usage
+
+```tsx
+import { AIOrb } from "@/registry/rank/ui/ai-orb";
+```
+
+The install includes `use-audio-pitch` for microphone-driven speed changes.
+
+## API
+
+<AutoTypeTable path="./src/registry/rank/ui/ai-orb.tsx" name="AIOrbProps" />

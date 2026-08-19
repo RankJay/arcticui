@@ -1,0 +1,31 @@
+---
+title: Liquid Glass
+description: A CSS displacement-map glass effect that warps whatever is behind it. Drag the panel around to see the lens distortion shift in real time. No WebGL — just SVG filters and backdrop-filter.
+---
+
+import { LiquidGlassDemo } from '@/components/docs/demos/liquid-glass-demo';
+import { ComponentPreview } from '@/components/docs/component-preview';
+
+## Preview
+
+<ComponentPreview className="bg-muted/30">
+  <LiquidGlassDemo />
+</ComponentPreview>
+
+## Install
+
+```npm
+npx shadcn@latest add @rank/liquid-glass
+```
+
+## Usage
+
+```tsx
+import { LiquidGlass } from "@/registry/rank/ui/liquid-glass";
+```
+
+Wrap content in the panel. Place colorful imagery or gradients behind it so the refraction effect shows.
+
+## API
+
+<AutoTypeTable path="./src/registry/rank/ui/liquid-glass.tsx" name="LiquidGlassProps" />

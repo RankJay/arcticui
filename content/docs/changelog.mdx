@@ -1,0 +1,27 @@
+---
+title: Changelog
+description: Release notes and updates for Rank UI.
+---
+
+## v0.1.0 — Initial Release
+
+Rank UI v0.1.0 includes physics-based animations, shaders, and micro-interactions.
+
+### Components
+
+- **Radial Menu (`@rank/radial-menu`)**: Context menu that fans items around a trigger button or cursor with spring physics and keyboard navigation.
+- **AI Orb (`@rank/ai-orb`)**: WebGL/Canvas mesh-gradient orb that reacts to microphone audio pitch via `use-audio-pitch`.
+- **Liquid Glass (`@rank/liquid-glass`)**: Glassmorphic panel with SVG distortion filters and backdrop blur.
+
+### Agent & LLM Layer
+
+- Support for `llms.txt` and `llms-full.txt` endpoints.
+- Markdown content negotiation via `Accept: text/markdown` and `.md` URL rewrites.
+- **Copy Markdown**, **Open in ChatGPT**, and **Open in Claude** page actions.
+- Machine-readable manifest at `agent-readability.json`.
+- Agent Skill at `skills/rank-ui`.
+
+### Distribution
+
+- Published to shadcn registry at `https://ui.rankjay.com/r`.
+- Components copy into `@/registry/rank/ui` and `@/registry/rank/hooks`.

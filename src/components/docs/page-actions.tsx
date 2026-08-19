@@ -54,7 +54,7 @@ export function PageActions({ title, markdownUrl, markdownContent }: PageActions
       <button
         type="button"
         onClick={handleCopy}
-        className="border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border px-3 text-xs font-medium shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none"
+        className="border-border/50 bg-background/80 text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border px-3 text-xs font-medium backdrop-blur-sm transition-all focus-visible:ring-1 focus-visible:outline-none hover:border-border"
       >
         {copied ? (
           <>
@@ -75,7 +75,7 @@ export function PageActions({ title, markdownUrl, markdownContent }: PageActions
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
-          className="border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border px-3 text-xs font-medium shadow-xs transition-colors focus-visible:ring-1 focus-visible:outline-none"
+          className="border-border/50 bg-background/80 text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-md border px-3 text-xs font-medium backdrop-blur-sm transition-all focus-visible:ring-1 focus-visible:outline-none hover:border-border"
         >
           <span>Open</span>
           <ChevronDown
@@ -86,7 +86,7 @@ export function PageActions({ title, markdownUrl, markdownContent }: PageActions
         </button>
 
         {isOpen && (
-          <div className="border-border bg-popover animate-in fade-in-0 zoom-in-95 absolute top-full left-0 z-50 mt-1.5 w-48 origin-top-left rounded-lg border p-1 shadow-lg ring-1 ring-black/5">
+          <div className="border-border/50 bg-popover/95 animate-in fade-in-0 zoom-in-95 absolute top-full left-0 z-50 mt-1.5 w-48 origin-top-left rounded-lg border p-1 shadow-xl backdrop-blur-md ring-1 ring-black/10">
             <a
               href={chatGptUrl}
               target="_blank"
@@ -109,7 +109,7 @@ export function PageActions({ title, markdownUrl, markdownContent }: PageActions
               <ExternalLink className="text-muted-foreground size-3" />
             </a>
 
-            <div className="border-border my-1 border-t" />
+            <div className="border-border/50 my-1 border-t" />
 
             <a
               href={markdownUrl}
